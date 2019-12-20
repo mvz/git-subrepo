@@ -1,0 +1,802 @@
+--- 54	2019-12-20 06:41:47.630776028 -0800
++++ 55	2019-12-20 06:54:04.390029229 -0800
+@@ -1,5 +1,5 @@
+-+ echo 54
+-54
+++ echo 55
++55
+ + make test test=test/branch-rev-list-one-path.t PROVEOPT=-v
+ prove -v test/branch-rev-list-one-path.t
+ +++ SOURCE=lib/git-subrepo
+@@ -833,11 +833,11 @@
+ + false
+ + false
+ ++ git rev-parse --verify HEAD
+-+ out=fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+++ out=4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+ + rc=0
+ + set -e
+ + [[ 0 -ne 0 ]]
+-+ output=fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+++ output=4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+ + assert-working-copy-is-clean
+ + [[ branch =~ ^(clone|init|pull|push|branch|commit)$ ]]
+ ++ pwd
+@@ -852,8 +852,8 @@
+ ++ git rev-parse --show-prefix
+ + [[ -n '' ]]
+ + command-init
+-+ export GIT_SUBREPO_RUNNING=584
+-+ GIT_SUBREPO_RUNNING=584
+++ export GIT_SUBREPO_RUNNING=1235
+++ GIT_SUBREPO_RUNNING=1235
+ + export GIT_SUBREPO_COMMAND=branch
+ + GIT_SUBREPO_COMMAND=branch
+ + : less
+@@ -866,8 +866,8 @@
+ + git rev-list HEAD -1
+ + git:get-head-branch-commit
+ ++ git rev-parse HEAD
+-+ output=fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+-+ original_head_commit=fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+++ output=4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+++ original_head_commit=4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+ + command:branch
+ + command-setup +subdir
+ + get-params +subdir
+@@ -1042,36 +1042,36 @@
+ + false
+ + true
+ ++ git rev-list --reverse --ancestry-path e21291a1ad392a9d4c51dd9586804f1467b28afd..HEAD
+-+ out='0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+-9562f346d12ee56c52b7254f458be681129a2042
+-309a6e5e59c4e3ca8dd04dac5b726fbd281087ca
+-2f5782ccf990341ba6e931817480d9f45cc2efba
+-e220827fa9caa59910edd8c4ddf8f9114a86813d
+-1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-fd45ced2ba8b4c843560e91859b5d0e75f1a5292'
+++ out='0935ddfe6434adcac42675f335d1b73ec6a1aab1
++49288ef34fd568c1cdad654ba072b8a7dbc8d100
++a6c9e1b654021953d487dd118a890ae05772013e
++3b8be2e3a603536a64f05217e1c6869dcbe03512
++fa763ea942dd9ae46a50604b3b1ea7822b1f7990
++3aab27b849a5420183420e6f960e1ddcfb6ccab2
++4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7'
+ + rc=0
+ + set -e
+ + [[ 0 -ne 0 ]]
+-+ output='0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+-9562f346d12ee56c52b7254f458be681129a2042
+-309a6e5e59c4e3ca8dd04dac5b726fbd281087ca
+-2f5782ccf990341ba6e931817480d9f45cc2efba
+-e220827fa9caa59910edd8c4ddf8f9114a86813d
+-1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-fd45ced2ba8b4c843560e91859b5d0e75f1a5292'
+-+ local 'commit_list=0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+-9562f346d12ee56c52b7254f458be681129a2042
+-309a6e5e59c4e3ca8dd04dac5b726fbd281087ca
+-2f5782ccf990341ba6e931817480d9f45cc2efba
+-e220827fa9caa59910edd8c4ddf8f9114a86813d
+-1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-fd45ced2ba8b4c843560e91859b5d0e75f1a5292'
+++ output='0935ddfe6434adcac42675f335d1b73ec6a1aab1
++49288ef34fd568c1cdad654ba072b8a7dbc8d100
++a6c9e1b654021953d487dd118a890ae05772013e
++3b8be2e3a603536a64f05217e1c6869dcbe03512
++fa763ea942dd9ae46a50604b3b1ea7822b1f7990
++3aab27b849a5420183420e6f960e1ddcfb6ccab2
++4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7'
+++ local 'commit_list=0935ddfe6434adcac42675f335d1b73ec6a1aab1
++49288ef34fd568c1cdad654ba072b8a7dbc8d100
++a6c9e1b654021953d487dd118a890ae05772013e
++3b8be2e3a603536a64f05217e1c6869dcbe03512
++fa763ea942dd9ae46a50604b3b1ea7822b1f7990
++3aab27b849a5420183420e6f960e1ddcfb6ccab2
++4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7'
+ + for commit in $commit_list
+-+ o 'Working on 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971'
+++ o 'Working on 0935ddfe6434adcac42675f335d1b73ec6a1aab1'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971:bar/.gitrepo subrepo.commit
+++ RUN git config --blob 0935ddfe6434adcac42675f335d1b73ec6a1aab1:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1080,7 +1080,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971:bar/.gitrepo subrepo.commit
++++ git config --blob 0935ddfe6434adcac42675f335d1b73ec6a1aab1:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1091,7 +1091,7 @@
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+ + [[ -n '' ]]
+-+ ancestor=0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+++ ancestor=0935ddfe6434adcac42675f335d1b73ec6a1aab1
+ + o 'Check for rebase'
+ + false
+ + git:rev-exists refs/subrepo/bar/fetch
+@@ -1116,7 +1116,7 @@
+ + o 'Create a new commit  -p 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+ + FAIL=false
+-+ RUN git cat-file -e 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971:bar
+++ RUN git cat-file -e 0935ddfe6434adcac42675f335d1b73ec6a1aab1:bar
+ + false
+ + false
+ + OK=true
+@@ -1125,7 +1125,7 @@
+ + local out=
+ + false
+ + false
+-++ git cat-file -e 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971:bar
++++ git cat-file -e 0935ddfe6434adcac42675f335d1b73ec6a1aab1:bar
+ + out=
+ + rc=0
+ + set -e
+@@ -1140,22 +1140,22 @@
+ + IFS='
+ '
+ + author_info=($(git log -1 --format=%ad%n%ae%n%an "$commit"))
+-++ git log -1 --format=%ad%n%ae%n%an 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
++++ git log -1 --format=%ad%n%ae%n%an 0935ddfe6434adcac42675f335d1b73ec6a1aab1
+ + local author_info
+ + IFS=' 	
+ '
+-++ git log -n 1 --format=%B 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
++++ git log -n 1 --format=%B 0935ddfe6434adcac42675f335d1b73ec6a1aab1
+ ++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:48 2019 -0800'
+ ++ GIT_AUTHOR_EMAIL=foo@foo
+ ++ GIT_AUTHOR_NAME='Ingy döt Net'
+-++ git commit-tree -F - -p 94c86ffc745232d89f78c6f895e11e71272518db 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971:bar
+-+ prev_commit=cb5dd7623fc5fca65205de692e9e2eb712f0f3d2
++++ git commit-tree -F - -p 94c86ffc745232d89f78c6f895e11e71272518db 0935ddfe6434adcac42675f335d1b73ec6a1aab1:bar
+++ prev_commit=37644972240df4101d77ff83a385795fafb3a605
+ + for commit in $commit_list
+-+ o 'Working on 9562f346d12ee56c52b7254f458be681129a2042'
+++ o 'Working on 49288ef34fd568c1cdad654ba072b8a7dbc8d100'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob 9562f346d12ee56c52b7254f458be681129a2042:bar/.gitrepo subrepo.commit
+++ RUN git config --blob 49288ef34fd568c1cdad654ba072b8a7dbc8d100:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1164,7 +1164,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob 9562f346d12ee56c52b7254f458be681129a2042:bar/.gitrepo subrepo.commit
++++ git config --blob 49288ef34fd568c1cdad654ba072b8a7dbc8d100:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1174,14 +1174,14 @@
+ + local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+-+ [[ -n 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971 ]]
+-++ git show -s --pretty=format:%P 9562f346d12ee56c52b7254f458be681129a2042
+-++ grep 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+-+ local is_direct_child=0e94e69b3e7f34b2980d6546d1a3d1de93e9b971
+-+ o 'is child: 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971'
+++ [[ -n 0935ddfe6434adcac42675f335d1b73ec6a1aab1 ]]
++++ git show -s --pretty=format:%P 49288ef34fd568c1cdad654ba072b8a7dbc8d100
++++ grep 0935ddfe6434adcac42675f335d1b73ec6a1aab1
+++ local is_direct_child=0935ddfe6434adcac42675f335d1b73ec6a1aab1
+++ o 'is child: 0935ddfe6434adcac42675f335d1b73ec6a1aab1'
+ + false
+-+ [[ -z 0e94e69b3e7f34b2980d6546d1a3d1de93e9b971 ]]
+-+ ancestor=9562f346d12ee56c52b7254f458be681129a2042
+++ [[ -z 0935ddfe6434adcac42675f335d1b73ec6a1aab1 ]]
+++ ancestor=49288ef34fd568c1cdad654ba072b8a7dbc8d100
+ + o 'Check for rebase'
+ + false
+ + git:rev-exists refs/subrepo/bar/fetch
+@@ -1194,16 +1194,16 @@
+ + o 'Find parents'
+ + false
+ + local first_parent=
+-+ [[ -n cb5dd7623fc5fca65205de692e9e2eb712f0f3d2 ]]
+-+ first_parent='-p cb5dd7623fc5fca65205de692e9e2eb712f0f3d2'
+++ [[ -n 37644972240df4101d77ff83a385795fafb3a605 ]]
+++ first_parent='-p 37644972240df4101d77ff83a385795fafb3a605'
+ + local second_parent=
+ + [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+ + [[ merge != \r\e\b\a\s\e ]]
+ + [[ 94c86ffc745232d89f78c6f895e11e71272518db != \9\4\c\8\6\f\f\c\7\4\5\2\3\2\d\8\9\f\7\8\c\6\f\8\9\5\e\1\1\e\7\1\2\7\2\5\1\8\d\b ]]
+-+ o 'Create a new commit -p cb5dd7623fc5fca65205de692e9e2eb712f0f3d2 '
+++ o 'Create a new commit -p 37644972240df4101d77ff83a385795fafb3a605 '
+ + false
+ + FAIL=false
+-+ RUN git cat-file -e 9562f346d12ee56c52b7254f458be681129a2042:bar
+++ RUN git cat-file -e 49288ef34fd568c1cdad654ba072b8a7dbc8d100:bar
+ + false
+ + false
+ + OK=true
+@@ -1212,7 +1212,7 @@
+ + local out=
+ + false
+ + false
+-++ git cat-file -e 9562f346d12ee56c52b7254f458be681129a2042:bar
++++ git cat-file -e 49288ef34fd568c1cdad654ba072b8a7dbc8d100:bar
+ + out=
+ + rc=0
+ + set -e
+@@ -1227,22 +1227,22 @@
+ + IFS='
+ '
+ + author_info=($(git log -1 --format=%ad%n%ae%n%an "$commit"))
+-++ git log -1 --format=%ad%n%ae%n%an 9562f346d12ee56c52b7254f458be681129a2042
++++ git log -1 --format=%ad%n%ae%n%an 49288ef34fd568c1cdad654ba072b8a7dbc8d100
+ + local author_info
+ + IFS=' 	
+ '
+-++ git log -n 1 --format=%B 9562f346d12ee56c52b7254f458be681129a2042
++++ git log -n 1 --format=%B 49288ef34fd568c1cdad654ba072b8a7dbc8d100
+ ++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:48 2019 -0800'
+ ++ GIT_AUTHOR_EMAIL=foo@foo
+ ++ GIT_AUTHOR_NAME='Ingy döt Net'
+-++ git commit-tree -F - -p cb5dd7623fc5fca65205de692e9e2eb712f0f3d2 9562f346d12ee56c52b7254f458be681129a2042:bar
+-+ prev_commit=f63a57ab8607b1a5c97bc4d39b0247659607d54d
++++ git commit-tree -F - -p 37644972240df4101d77ff83a385795fafb3a605 49288ef34fd568c1cdad654ba072b8a7dbc8d100:bar
+++ prev_commit=9527afc9bce757a1dcf02675dcd9cccfd714f2cc
+ + for commit in $commit_list
+-+ o 'Working on 309a6e5e59c4e3ca8dd04dac5b726fbd281087ca'
+++ o 'Working on a6c9e1b654021953d487dd118a890ae05772013e'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob 309a6e5e59c4e3ca8dd04dac5b726fbd281087ca:bar/.gitrepo subrepo.commit
+++ RUN git config --blob a6c9e1b654021953d487dd118a890ae05772013e:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1251,7 +1251,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob 309a6e5e59c4e3ca8dd04dac5b726fbd281087ca:bar/.gitrepo subrepo.commit
++++ git config --blob a6c9e1b654021953d487dd118a890ae05772013e:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1261,22 +1261,22 @@
+ + local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+-+ [[ -n 9562f346d12ee56c52b7254f458be681129a2042 ]]
+-++ git show -s --pretty=format:%P 309a6e5e59c4e3ca8dd04dac5b726fbd281087ca
+-++ grep 9562f346d12ee56c52b7254f458be681129a2042
+++ [[ -n 49288ef34fd568c1cdad654ba072b8a7dbc8d100 ]]
++++ git show -s --pretty=format:%P a6c9e1b654021953d487dd118a890ae05772013e
++++ grep 49288ef34fd568c1cdad654ba072b8a7dbc8d100
+ + local is_direct_child=
+ + o 'is child: '
+ + false
+ + [[ -z '' ]]
+-+ o 'Ignore 309a6e5e59c4e3ca8dd04dac5b726fbd281087ca, it'\''s not in the selected path'
+++ o 'Ignore a6c9e1b654021953d487dd118a890ae05772013e, it'\''s not in the selected path'
+ + false
+ + continue
+ + for commit in $commit_list
+-+ o 'Working on 2f5782ccf990341ba6e931817480d9f45cc2efba'
+++ o 'Working on 3b8be2e3a603536a64f05217e1c6869dcbe03512'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob 2f5782ccf990341ba6e931817480d9f45cc2efba:bar/.gitrepo subrepo.commit
+++ RUN git config --blob 3b8be2e3a603536a64f05217e1c6869dcbe03512:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1285,7 +1285,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob 2f5782ccf990341ba6e931817480d9f45cc2efba:bar/.gitrepo subrepo.commit
++++ git config --blob 3b8be2e3a603536a64f05217e1c6869dcbe03512:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1295,109 +1295,22 @@
+ + local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+-+ [[ -n 9562f346d12ee56c52b7254f458be681129a2042 ]]
+-++ git show -s --pretty=format:%P 2f5782ccf990341ba6e931817480d9f45cc2efba
+-++ grep 9562f346d12ee56c52b7254f458be681129a2042
+-+ local is_direct_child=9562f346d12ee56c52b7254f458be681129a2042
+-+ o 'is child: 9562f346d12ee56c52b7254f458be681129a2042'
+-+ false
+-+ [[ -z 9562f346d12ee56c52b7254f458be681129a2042 ]]
+-+ ancestor=2f5782ccf990341ba6e931817480d9f45cc2efba
+-+ o 'Check for rebase'
+-+ false
+-+ git:rev-exists refs/subrepo/bar/fetch
+-+ git rev-list refs/subrepo/bar/fetch -1
+-+ git:commit-in-rev-list 94c86ffc745232d89f78c6f895e11e71272518db refs/subrepo/bar/fetch
+-+ local commit=94c86ffc745232d89f78c6f895e11e71272518db
+-+ local list_head=refs/subrepo/bar/fetch
+-+ git rev-list refs/subrepo/bar/fetch
+-+ grep -q '^94c86ffc745232d89f78c6f895e11e71272518db'
+-+ o 'Find parents'
+-+ false
+-+ local first_parent=
+-+ [[ -n f63a57ab8607b1a5c97bc4d39b0247659607d54d ]]
+-+ first_parent='-p f63a57ab8607b1a5c97bc4d39b0247659607d54d'
+-+ local second_parent=
+-+ [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+-+ [[ merge != \r\e\b\a\s\e ]]
+-+ [[ 94c86ffc745232d89f78c6f895e11e71272518db != \9\4\c\8\6\f\f\c\7\4\5\2\3\2\d\8\9\f\7\8\c\6\f\8\9\5\e\1\1\e\7\1\2\7\2\5\1\8\d\b ]]
+-+ o 'Create a new commit -p f63a57ab8607b1a5c97bc4d39b0247659607d54d '
+-+ false
+-+ FAIL=false
+-+ RUN git cat-file -e 2f5782ccf990341ba6e931817480d9f45cc2efba:bar
+-+ false
+-+ false
+-+ OK=true
+-+ set +e
+-+ local rc=
+-+ local out=
+-+ false
+-+ false
+-++ git cat-file -e 2f5782ccf990341ba6e931817480d9f45cc2efba:bar
+-+ out=
+-+ rc=0
+-+ set -e
+-+ [[ 0 -ne 0 ]]
+-+ output=
+-+ OK
+-+ true
+-+ o 'Create with content'
+-+ false
+-+ local 'PREVIOUS_IFS= 	
+-'
+-+ IFS='
+-'
+-+ author_info=($(git log -1 --format=%ad%n%ae%n%an "$commit"))
+-++ git log -1 --format=%ad%n%ae%n%an 2f5782ccf990341ba6e931817480d9f45cc2efba
+-+ local author_info
+-+ IFS=' 	
+-'
+-++ git log -n 1 --format=%B 2f5782ccf990341ba6e931817480d9f45cc2efba
+-++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:48 2019 -0800'
+-++ GIT_AUTHOR_EMAIL=foo@foo
+-++ GIT_AUTHOR_NAME='Ingy döt Net'
+-++ git commit-tree -F - -p f63a57ab8607b1a5c97bc4d39b0247659607d54d 2f5782ccf990341ba6e931817480d9f45cc2efba:bar
+-+ prev_commit=c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0
+-+ for commit in $commit_list
+-+ o 'Working on e220827fa9caa59910edd8c4ddf8f9114a86813d'
+-+ false
+-+ FAIL=false
+-+ OUT=true
+-+ RUN git config --blob e220827fa9caa59910edd8c4ddf8f9114a86813d:bar/.gitrepo subrepo.commit
+-+ false
+-+ false
+-+ OK=true
+-+ set +e
+-+ local rc=
+-+ local out=
+-+ false
+-+ true
+-++ git config --blob e220827fa9caa59910edd8c4ddf8f9114a86813d:bar/.gitrepo subrepo.commit
+-+ out=94c86ffc745232d89f78c6f895e11e71272518db
+-+ rc=0
+-+ set -e
+-+ [[ 0 -ne 0 ]]
+-+ output=94c86ffc745232d89f78c6f895e11e71272518db
+-+ [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+-+ local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+-+ o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+-+ false
+-+ [[ -n 2f5782ccf990341ba6e931817480d9f45cc2efba ]]
+-++ git show -s --pretty=format:%P e220827fa9caa59910edd8c4ddf8f9114a86813d
+-++ grep 2f5782ccf990341ba6e931817480d9f45cc2efba
+++ [[ -n 49288ef34fd568c1cdad654ba072b8a7dbc8d100 ]]
++++ git show -s --pretty=format:%P 3b8be2e3a603536a64f05217e1c6869dcbe03512
++++ grep 49288ef34fd568c1cdad654ba072b8a7dbc8d100
+ + local is_direct_child=
+ + o 'is child: '
+ + false
+ + [[ -z '' ]]
+-+ o 'Ignore e220827fa9caa59910edd8c4ddf8f9114a86813d, it'\''s not in the selected path'
+++ o 'Ignore 3b8be2e3a603536a64f05217e1c6869dcbe03512, it'\''s not in the selected path'
+ + false
+ + continue
+ + for commit in $commit_list
+-+ o 'Working on 1f5cda4d3c249f2dd278289bf7405ce180c43c34'
+++ o 'Working on fa763ea942dd9ae46a50604b3b1ea7822b1f7990'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob 1f5cda4d3c249f2dd278289bf7405ce180c43c34:bar/.gitrepo subrepo.commit
+++ RUN git config --blob fa763ea942dd9ae46a50604b3b1ea7822b1f7990:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1406,7 +1319,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob 1f5cda4d3c249f2dd278289bf7405ce180c43c34:bar/.gitrepo subrepo.commit
++++ git config --blob fa763ea942dd9ae46a50604b3b1ea7822b1f7990:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1416,14 +1329,14 @@
+ + local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+-+ [[ -n 2f5782ccf990341ba6e931817480d9f45cc2efba ]]
+-++ git show -s --pretty=format:%P 1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-++ grep 2f5782ccf990341ba6e931817480d9f45cc2efba
+-+ local is_direct_child=2f5782ccf990341ba6e931817480d9f45cc2efba
+-+ o 'is child: 2f5782ccf990341ba6e931817480d9f45cc2efba'
+++ [[ -n 49288ef34fd568c1cdad654ba072b8a7dbc8d100 ]]
++++ git show -s --pretty=format:%P fa763ea942dd9ae46a50604b3b1ea7822b1f7990
++++ grep 49288ef34fd568c1cdad654ba072b8a7dbc8d100
+++ local is_direct_child=49288ef34fd568c1cdad654ba072b8a7dbc8d100
+++ o 'is child: 49288ef34fd568c1cdad654ba072b8a7dbc8d100'
+ + false
+-+ [[ -z 2f5782ccf990341ba6e931817480d9f45cc2efba ]]
+-+ ancestor=1f5cda4d3c249f2dd278289bf7405ce180c43c34
+++ [[ -z 49288ef34fd568c1cdad654ba072b8a7dbc8d100 ]]
+++ ancestor=fa763ea942dd9ae46a50604b3b1ea7822b1f7990
+ + o 'Check for rebase'
+ + false
+ + git:rev-exists refs/subrepo/bar/fetch
+@@ -1436,16 +1349,16 @@
+ + o 'Find parents'
+ + false
+ + local first_parent=
+-+ [[ -n c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0 ]]
+-+ first_parent='-p c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0'
+++ [[ -n 9527afc9bce757a1dcf02675dcd9cccfd714f2cc ]]
+++ first_parent='-p 9527afc9bce757a1dcf02675dcd9cccfd714f2cc'
+ + local second_parent=
+ + [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+ + [[ merge != \r\e\b\a\s\e ]]
+ + [[ 94c86ffc745232d89f78c6f895e11e71272518db != \9\4\c\8\6\f\f\c\7\4\5\2\3\2\d\8\9\f\7\8\c\6\f\8\9\5\e\1\1\e\7\1\2\7\2\5\1\8\d\b ]]
+-+ o 'Create a new commit -p c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0 '
+++ o 'Create a new commit -p 9527afc9bce757a1dcf02675dcd9cccfd714f2cc '
+ + false
+ + FAIL=false
+-+ RUN git cat-file -e 1f5cda4d3c249f2dd278289bf7405ce180c43c34:bar
+++ RUN git cat-file -e fa763ea942dd9ae46a50604b3b1ea7822b1f7990:bar
+ + false
+ + false
+ + OK=true
+@@ -1454,7 +1367,7 @@
+ + local out=
+ + false
+ + false
+-++ git cat-file -e 1f5cda4d3c249f2dd278289bf7405ce180c43c34:bar
++++ git cat-file -e fa763ea942dd9ae46a50604b3b1ea7822b1f7990:bar
+ + out=
+ + rc=0
+ + set -e
+@@ -1469,22 +1382,56 @@
+ + IFS='
+ '
+ + author_info=($(git log -1 --format=%ad%n%ae%n%an "$commit"))
+-++ git log -1 --format=%ad%n%ae%n%an 1f5cda4d3c249f2dd278289bf7405ce180c43c34
++++ git log -1 --format=%ad%n%ae%n%an fa763ea942dd9ae46a50604b3b1ea7822b1f7990
+ + local author_info
+ + IFS=' 	
+ '
+-++ git log -n 1 --format=%B 1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:48 2019 -0800'
++++ git log -n 1 --format=%B fa763ea942dd9ae46a50604b3b1ea7822b1f7990
++++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:50 2019 -0800'
+ ++ GIT_AUTHOR_EMAIL=foo@foo
+ ++ GIT_AUTHOR_NAME='Ingy döt Net'
+-++ git commit-tree -F - -p c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0 1f5cda4d3c249f2dd278289bf7405ce180c43c34:bar
+-+ prev_commit=0000f30a2452bb735d928648317639c3eb11c8a6
++++ git commit-tree -F - -p 9527afc9bce757a1dcf02675dcd9cccfd714f2cc fa763ea942dd9ae46a50604b3b1ea7822b1f7990:bar
+++ prev_commit=e7161fafef052e672817a362cf5080d660792925
+++ for commit in $commit_list
+++ o 'Working on 3aab27b849a5420183420e6f960e1ddcfb6ccab2'
+++ false
+++ FAIL=false
+++ OUT=true
+++ RUN git config --blob 3aab27b849a5420183420e6f960e1ddcfb6ccab2:bar/.gitrepo subrepo.commit
+++ false
+++ false
+++ OK=true
+++ set +e
+++ local rc=
+++ local out=
+++ false
+++ true
++++ git config --blob 3aab27b849a5420183420e6f960e1ddcfb6ccab2:bar/.gitrepo subrepo.commit
+++ out=94c86ffc745232d89f78c6f895e11e71272518db
+++ rc=0
+++ set -e
+++ [[ 0 -ne 0 ]]
+++ output=94c86ffc745232d89f78c6f895e11e71272518db
+++ [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+++ local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+++ o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+++ false
+++ [[ -n fa763ea942dd9ae46a50604b3b1ea7822b1f7990 ]]
++++ git show -s --pretty=format:%P 3aab27b849a5420183420e6f960e1ddcfb6ccab2
++++ grep fa763ea942dd9ae46a50604b3b1ea7822b1f7990
+++ local is_direct_child=
+++ o 'is child: '
+++ false
+++ [[ -z '' ]]
+++ o 'Ignore 3aab27b849a5420183420e6f960e1ddcfb6ccab2, it'\''s not in the selected path'
+++ false
+++ continue
+ + for commit in $commit_list
+-+ o 'Working on fd45ced2ba8b4c843560e91859b5d0e75f1a5292'
+++ o 'Working on 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7'
+ + false
+ + FAIL=false
+ + OUT=true
+-+ RUN git config --blob fd45ced2ba8b4c843560e91859b5d0e75f1a5292:bar/.gitrepo subrepo.commit
+++ RUN git config --blob 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7:bar/.gitrepo subrepo.commit
+ + false
+ + false
+ + OK=true
+@@ -1493,7 +1440,7 @@
+ + local out=
+ + false
+ + true
+-++ git config --blob fd45ced2ba8b4c843560e91859b5d0e75f1a5292:bar/.gitrepo subrepo.commit
++++ git config --blob 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7:bar/.gitrepo subrepo.commit
+ + out=94c86ffc745232d89f78c6f895e11e71272518db
+ + rc=0
+ + set -e
+@@ -1503,14 +1450,14 @@
+ + local gitrepo_commit=94c86ffc745232d89f78c6f895e11e71272518db
+ + o '.gitrepo reference commit: 94c86ffc745232d89f78c6f895e11e71272518db'
+ + false
+-+ [[ -n 1f5cda4d3c249f2dd278289bf7405ce180c43c34 ]]
+-++ git show -s --pretty=format:%P fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+-++ grep 1f5cda4d3c249f2dd278289bf7405ce180c43c34
+-+ local 'is_direct_child=1f5cda4d3c249f2dd278289bf7405ce180c43c34 e220827fa9caa59910edd8c4ddf8f9114a86813d'
+-+ o 'is child: 1f5cda4d3c249f2dd278289bf7405ce180c43c34 e220827fa9caa59910edd8c4ddf8f9114a86813d'
+++ [[ -n fa763ea942dd9ae46a50604b3b1ea7822b1f7990 ]]
++++ git show -s --pretty=format:%P 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
++++ grep fa763ea942dd9ae46a50604b3b1ea7822b1f7990
+++ local 'is_direct_child=3aab27b849a5420183420e6f960e1ddcfb6ccab2 fa763ea942dd9ae46a50604b3b1ea7822b1f7990'
+++ o 'is child: 3aab27b849a5420183420e6f960e1ddcfb6ccab2 fa763ea942dd9ae46a50604b3b1ea7822b1f7990'
+ + false
+-+ [[ -z 1f5cda4d3c249f2dd278289bf7405ce180c43c34 e220827fa9caa59910edd8c4ddf8f9114a86813d ]]
+-+ ancestor=fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+++ [[ -z 3aab27b849a5420183420e6f960e1ddcfb6ccab2 fa763ea942dd9ae46a50604b3b1ea7822b1f7990 ]]
+++ ancestor=4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+ + o 'Check for rebase'
+ + false
+ + git:rev-exists refs/subrepo/bar/fetch
+@@ -1523,16 +1470,16 @@
+ + o 'Find parents'
+ + false
+ + local first_parent=
+-+ [[ -n 0000f30a2452bb735d928648317639c3eb11c8a6 ]]
+-+ first_parent='-p 0000f30a2452bb735d928648317639c3eb11c8a6'
+++ [[ -n e7161fafef052e672817a362cf5080d660792925 ]]
+++ first_parent='-p e7161fafef052e672817a362cf5080d660792925'
+ + local second_parent=
+ + [[ -z 94c86ffc745232d89f78c6f895e11e71272518db ]]
+ + [[ merge != \r\e\b\a\s\e ]]
+ + [[ 94c86ffc745232d89f78c6f895e11e71272518db != \9\4\c\8\6\f\f\c\7\4\5\2\3\2\d\8\9\f\7\8\c\6\f\8\9\5\e\1\1\e\7\1\2\7\2\5\1\8\d\b ]]
+-+ o 'Create a new commit -p 0000f30a2452bb735d928648317639c3eb11c8a6 '
+++ o 'Create a new commit -p e7161fafef052e672817a362cf5080d660792925 '
+ + false
+ + FAIL=false
+-+ RUN git cat-file -e fd45ced2ba8b4c843560e91859b5d0e75f1a5292:bar
+++ RUN git cat-file -e 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7:bar
+ + false
+ + false
+ + OK=true
+@@ -1541,7 +1488,7 @@
+ + local out=
+ + false
+ + false
+-++ git cat-file -e fd45ced2ba8b4c843560e91859b5d0e75f1a5292:bar
++++ git cat-file -e 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7:bar
+ + out=
+ + rc=0
+ + set -e
+@@ -1556,19 +1503,19 @@
+ + IFS='
+ '
+ + author_info=($(git log -1 --format=%ad%n%ae%n%an "$commit"))
+-++ git log -1 --format=%ad%n%ae%n%an fd45ced2ba8b4c843560e91859b5d0e75f1a5292
++++ git log -1 --format=%ad%n%ae%n%an 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
+ + local author_info
+ + IFS=' 	
+ '
+-++ git log -n 1 --format=%B fd45ced2ba8b4c843560e91859b5d0e75f1a5292
+-++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:48 2019 -0800'
++++ git log -n 1 --format=%B 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7
++++ GIT_AUTHOR_DATE='Fri Dec 20 06:36:50 2019 -0800'
+ ++ GIT_AUTHOR_EMAIL=foo@foo
+ ++ GIT_AUTHOR_NAME='Ingy döt Net'
+-++ git commit-tree -F - -p 0000f30a2452bb735d928648317639c3eb11c8a6 fd45ced2ba8b4c843560e91859b5d0e75f1a5292:bar
+-+ prev_commit=d33c10d16dbb8dd6e925201b9308d5fa27c861c9
+-+ o 'Create branch '\''subrepo/bar'\'' for this new commit set d33c10d16dbb8dd6e925201b9308d5fa27c861c9.'
++++ git commit-tree -F - -p e7161fafef052e672817a362cf5080d660792925 4d2af7d12a2fac90b3deb3a0cc5bfb7d0fb769c7:bar
+++ prev_commit=0429476c8c3aa3bec66af0ecfc4a1eb84e3305db
+++ o 'Create branch '\''subrepo/bar'\'' for this new commit set 0429476c8c3aa3bec66af0ecfc4a1eb84e3305db.'
+ + false
+-+ RUN git branch subrepo/bar d33c10d16dbb8dd6e925201b9308d5fa27c861c9
+++ RUN git branch subrepo/bar 0429476c8c3aa3bec66af0ecfc4a1eb84e3305db
+ + false
+ + false
+ + OK=true
+@@ -1577,7 +1524,7 @@
+ + local out=
+ + false
+ + false
+-++ git branch subrepo/bar d33c10d16dbb8dd6e925201b9308d5fa27c861c9
++++ git branch subrepo/bar 0429476c8c3aa3bec66af0ecfc4a1eb84e3305db
+ + out=
+ + rc=0
+ + set -e
+@@ -1599,12 +1546,12 @@
+ + false
+ + false
+ ++ git filter-branch -f --prune-empty --tree-filter 'rm -f .gitrepo' 94c86ffc745232d89f78c6f895e11e71272518db..subrepo/bar
+-+ out='Rewrite cb5dd7623fc5fca65205de692e9e2eb712f0f3d2 (1/5) (0 seconds passed, remaining 0 predicted)    Rewrite f63a57ab8607b1a5c97bc4d39b0247659607d54d (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0 (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite 0000f30a2452bb735d928648317639c3eb11c8a6 (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite d33c10d16dbb8dd6e925201b9308d5fa27c861c9 (5/5) (1 seconds passed, remaining 0 predicted)    
+++ out='Rewrite 37644972240df4101d77ff83a385795fafb3a605 (1/4) (0 seconds passed, remaining 0 predicted)    Rewrite 9527afc9bce757a1dcf02675dcd9cccfd714f2cc (2/4) (0 seconds passed, remaining 0 predicted)    Rewrite e7161fafef052e672817a362cf5080d660792925 (3/4) (0 seconds passed, remaining 0 predicted)    Rewrite 0429476c8c3aa3bec66af0ecfc4a1eb84e3305db (4/4) (0 seconds passed, remaining 0 predicted)    
+ Ref '\''refs/heads/subrepo/bar'\'' was rewritten'
+ + rc=0
+ + set -e
+ + [[ 0 -ne 0 ]]
+-+ output='Rewrite cb5dd7623fc5fca65205de692e9e2eb712f0f3d2 (1/5) (0 seconds passed, remaining 0 predicted)    Rewrite f63a57ab8607b1a5c97bc4d39b0247659607d54d (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite c5eb4dbaa10f3f1b437f6fb1ecaf0114d9a580c0 (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite 0000f30a2452bb735d928648317639c3eb11c8a6 (2/5) (1 seconds passed, remaining 1 predicted)    Rewrite d33c10d16dbb8dd6e925201b9308d5fa27c861c9 (5/5) (1 seconds passed, remaining 0 predicted)    
+++ output='Rewrite 37644972240df4101d77ff83a385795fafb3a605 (1/4) (0 seconds passed, remaining 0 predicted)    Rewrite 9527afc9bce757a1dcf02675dcd9cccfd714f2cc (2/4) (0 seconds passed, remaining 0 predicted)    Rewrite e7161fafef052e672817a362cf5080d660792925 (3/4) (0 seconds passed, remaining 0 predicted)    Rewrite 0429476c8c3aa3bec66af0ecfc4a1eb84e3305db (4/4) (0 seconds passed, remaining 0 predicted)    
+ Ref '\''refs/heads/subrepo/bar'\'' was rewritten'
+ + git:create-worktree subrepo/bar
+ + local branch=subrepo/bar
+@@ -1620,19 +1567,19 @@
+ + false
+ ++ git worktree add .git/tmp/subrepo/bar subrepo/bar
+ + out='Preparing .git/tmp/subrepo/bar (identifier bar)
+-HEAD is now at 3ce277d Merge branch '\''master'\'' into other'
++HEAD is now at f725553 Merge branch '\''master'\'' into other'
+ + rc=0
+ + set -e
+ + [[ 0 -ne 0 ]]
+ + output='Preparing .git/tmp/subrepo/bar (identifier bar)
+-HEAD is now at 3ce277d Merge branch '\''master'\'' into other'
++HEAD is now at f725553 Merge branch '\''master'\'' into other'
+ + o 'Create ref '\''refs/subrepo/bar/branch'\''.'
+ + false
+ + git:make-ref refs/subrepo/bar/branch subrepo/bar
+ + local ref_name=refs/subrepo/bar/branch
+ ++ git rev-parse subrepo/bar
+-+ local commit=3ce277d5d0812ab531122fac8684e085628e122b
+-+ RUN git update-ref refs/subrepo/bar/branch 3ce277d5d0812ab531122fac8684e085628e122b
+++ local commit=f725553aa51dc258bc45e0040ed4ba1687b39541
+++ RUN git update-ref refs/subrepo/bar/branch f725553aa51dc258bc45e0040ed4ba1687b39541
+ + false
+ + false
+ + OK=true
+@@ -1641,7 +1588,7 @@
+ + local out=
+ + false
+ + false
+-++ git update-ref refs/subrepo/bar/branch 3ce277d5d0812ab531122fac8684e085628e122b
++++ git update-ref refs/subrepo/bar/branch f725553aa51dc258bc45e0040ed4ba1687b39541
+ + out=
+ + rc=0
+ + set -e
+@@ -1662,41 +1609,66 @@
+ + echo 'ok 6 - subrepo branch command output is correct'
+ ++ cd tmp/owner/foo
+ ++ git rev-list subrepo/bar
+-+ out='3ce277d5d0812ab531122fac8684e085628e122b
+-5b215f69d3e69ba57ceedab7c9ae93957731e697
+-7c336d4cd6f740b35b327fce023a3cbe31ee13ab
+-0d841e7e53ad624d3302daf0a7280b32d716013a
+++ out='f725553aa51dc258bc45e0040ed4ba1687b39541
++5ea57bdd2443db5014ec3b734217f1cd7e3942ab
++14c6b001e55e64b4d60e7508db8bf250c1d64ef8
+ 94c86ffc745232d89f78c6f895e11e71272518db
+ f62a8ff3feadf39b0a98f1a86ec6d1eb33858ee9'
+-+ echo '3ce277d5d0812ab531122fac8684e085628e122b
+-5b215f69d3e69ba57ceedab7c9ae93957731e697
+-7c336d4cd6f740b35b327fce023a3cbe31ee13ab
+-0d841e7e53ad624d3302daf0a7280b32d716013a
+++ echo 'f725553aa51dc258bc45e0040ed4ba1687b39541
++5ea57bdd2443db5014ec3b734217f1cd7e3942ab
++14c6b001e55e64b4d60e7508db8bf250c1d64ef8
+ 94c86ffc745232d89f78c6f895e11e71272518db
+ f62a8ff3feadf39b0a98f1a86ec6d1eb33858ee9'
+-3ce277d5d0812ab531122fac8684e085628e122b
+-5b215f69d3e69ba57ceedab7c9ae93957731e697
+-7c336d4cd6f740b35b327fce023a3cbe31ee13ab
+-0d841e7e53ad624d3302daf0a7280b32d716013a
++f725553aa51dc258bc45e0040ed4ba1687b39541
++5ea57bdd2443db5014ec3b734217f1cd7e3942ab
++14c6b001e55e64b4d60e7508db8bf250c1d64ef8
+ 94c86ffc745232d89f78c6f895e11e71272518db
+ f62a8ff3feadf39b0a98f1a86ec6d1eb33858ee9
+-++ echo '3ce277d5d0812ab531122fac8684e085628e122b
+-5b215f69d3e69ba57ceedab7c9ae93957731e697
+-7c336d4cd6f740b35b327fce023a3cbe31ee13ab
+-0d841e7e53ad624d3302daf0a7280b32d716013a
++++ echo 'f725553aa51dc258bc45e0040ed4ba1687b39541
++5ea57bdd2443db5014ec3b734217f1cd7e3942ab
++14c6b001e55e64b4d60e7508db8bf250c1d64ef8
+ 94c86ffc745232d89f78c6f895e11e71272518db
+ f62a8ff3feadf39b0a98f1a86ec6d1eb33858ee9'
+ ++ wc -l
+-+ is 6 6 'We have only created commits for one of the paths'
+-+ local got=6 want=6 'label=We have only created commits for one of the paths'
+-+ [[ 6 == \6 ]]
+-+ Test::Tap:pass 'We have only created commits for one of the paths'
+++ is 5 6 'We have only created commits for one of the paths'
+++ local got=5 want=6 'label=We have only created commits for one of the paths'
+++ [[ 5 == \6 ]]
+++ Test::Tap:fail 'We have only created commits for one of the paths' Test::More:is-fail
+ + Test::Tap:_check-pid
+ + '[' 32732 -ne 32732 ']'
+ + let Test__Tap_run=Test__Tap_run+1
+-+ local 'label=We have only created commits for one of the paths'
+++ c=($(caller $Test__Tap_CALL_STACK_LEVEL))
++++ caller 1
+++ local c
+++ local file=test/branch-rev-list-one-path.t
+++ local line=41
+++ local 'label=We have only created commits for one of the paths' callback=Test::More:is-fail
+ + '[' -n 'We have only created commits for one of the paths' ']'
+-+ echo 'ok 7 - We have only created commits for one of the paths'
+++ echo 'not ok 7 - We have only created commits for one of the paths'
+++ label=''\''We have only created commits for one of the paths'\''\n#   at test/branch-rev-list-one-path.t line 41.'
+++ label=''\''We have only created commits for one of the paths'\''\n#   at test/branch-rev-list-one-path.t line 41.'
+++ echo -e '#   Failed test '\''We have only created commits for one of the paths'\''\n#   at test/branch-rev-list-one-path.t line 41.'
++#   Failed test 'We have only created commits for one of the paths'
++#   at test/branch-rev-list-one-path.t line 41.
+++ '[' -n Test::More:is-fail ']'
+++ Test::More:is-fail
+++ local Test__Tap_CALL_STACK_LEVEL=
+++ Test__Tap_CALL_STACK_LEVEL=1
+++ [[ 6 =~ n ]]
+++ Test::Tap:diag '    got: '\''5'\''
++  expected: '\''6'\'''
+++ Test::Tap:_check-pid
+++ '[' 32732 -ne 32732 ']'
+++ local 'msg=    got: '\''5'\''
++  expected: '\''6'\'''
+++ msg='#     got: '\''5'\''
++#   expected: '\''6'\'''
+++ echo '#     got: '\''5'\''
++#   expected: '\''6'\'''
++#     got: '5'
++#   expected: '6'
+++ local rc=0
+++ [[ '' -eq 0 ]]
+ + done_testing
+ + Test::Tap:done_testing
+ + Test::Tap:_check-pid
+@@ -1732,9 +1704,13 @@
+ ok 4 - File 'tmp/owner/foo/bar/file4' exists
+ ok 5 - File 'tmp/owner/foo/bar/file5' exists
+ ok 6 - subrepo branch command output is correct
+-ok 7 - We have only created commits for one of the paths
++not ok 7 - We have only created commits for one of the paths
+ 1..7
+-ok
+-All tests successful.
+-Files=1, Tests=7,  2 wallclock secs ( 0.06 usr  0.03 sys +  1.12 cusr  0.86 csys =  2.07 CPU)
+-Result: PASS
++Failed 1/7 subtests 
++
++Test Summary Report
++-------------------
++test/branch-rev-list-one-path.t (Wstat: 0 Tests: 7 Failed: 1)
++  Failed test:  7
++Files=1, Tests=7,  1 wallclock secs ( 0.05 usr  0.02 sys +  0.88 cusr  0.65 csys =  1.60 CPU)
++Result: FAIL
