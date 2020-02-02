@@ -61,6 +61,56 @@ clone-foo-and-bar
 ) &> /dev/null || die
 
 {
+  fooLog="$(
+    cd $OWNER/foo
+    git log --graph --pretty=format:'%s' --abbrev-commit
+  )"
+
+  expectedFooLog=\
+"* git subrepo push bar
+* git subrepo pull (merge) bar
+* modified file: bar/FooBar
+*   Merge branch with subrepo changes
+|\  
+| * modified file: bar/FooBar
+| * add new file: bar/FooBar
+* |   Merge branch without subrepo changes
+|\ \  
+| |/  
+|/|   
+| * modified file: ./FooBar
+| * add new file: ./FooBar
+|/  
+* git subrepo clone ../../../tmp/upstream/bar
+* Foo"
+  is "$fooLog" \
+    "$expectedFooLog" \
+    "Main repo has the correct log"
+}
+
+{
+  barLog="$(
+    cd $OWNER/bar
+    git log --graph --pretty=format:'%s' --abbrev-commit
+  )"
+
+  expectedBarLog=\
+"*   git subrepo pull (merge) bar
+|\  
+| * add new file: bargy
+* | modified file: bar/FooBar
+* | modified file: bar/FooBar
+* | add new file: bar/FooBar
+|/  
+* bard/Bard
+* Bar"
+
+  is "$barLog" \
+    "$expectedBarLog" \
+    "barLog"
+}
+
+{
   pullCommit="$(
     cd $OWNER/bar
     git log HEAD -1 --pretty='format:%an %ae %cn %ce'
